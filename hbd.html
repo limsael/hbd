@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday, Mr Keita!</title>
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+      :root {
+        --bg: #0f172a;
+        --card-bg: #1e293b;
+        --accent: #38bdf8;
+        --text: #f8fafc;
+        --comment: #94a3b8;
+        --keyword: #f43f5e;
+        --string: #34d399;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--bg);
+        color: var(--text);
+        font-family: "Courier New", Courier, monospace;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .container {
+        background-color: var(--card-bg);
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        max-width: 550px;
+        width: 90%;
+        border: 1px solid #334155;
+        text-align: left;
+      }
+
+      .code-block {
+        line-height: 1.6;
+      }
+
+      .comment {
+        color: var(--comment);
+      }
+      .keyword {
+        color: var(--keyword);
+        font-weight: bold;
+      }
+      .string {
+        color: var(--string);
+      }
+      .accent {
+        color: var(--accent);
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid #334155;
+        padding-bottom: 0.5rem;
+      }
+
+      .btn-container {
+        margin-top: 2rem;
+        text-align: center;
+      }
+
+      button {
+        background-color: var(--accent);
+        color: #0f172a;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        font-family: inherit;
+        font-weight: bold;
+        font-size: 1rem;
+        border-radius: 6px;
+        cursor: pointer;
+        transition:
+          transform 0.2s,
+          background-color 0.2s;
+      }
+
+      button:hover {
+        background-color: #0284c7;
+        transform: scale(1.05);
+      }
+
+      #message {
+        margin-top: 1.5rem;
+        padding: 1rem;
+        text-align: center;
+        font-size: 1rem;
+        color: var(--string);
+        background-color: #0f172a;
+        border-radius: 8px;
+        border: 1px dashed var(--accent);
+        display: none;
+        line-height: 1.4;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1><span>&#127874;</span>Kanashimi Wo Yasashisa Ni</h1>
+      <div class="code-block">
+        <p class="comment">// TODO: Wish the best teacher ever</p>
+        <p>
+          <span class="keyword">const</span> teacher =
+          <span class="string">"Awesome Mentor"</span>;
+        </p>
+        <p>
+          <span class="keyword">let</span> age =
+          <span class="accent">undefined</span>;
+          <span class="comment">// Classified information</span>
+        </p>
+        <br />
+        <p>
+          <span class="keyword">function</span>
+          <span class="accent">celebrate</span>() {
+        </p>
+        <p style="padding-left: 1.5rem">
+          <span class="keyword">return</span>
+          <span class="string">"Cycle through awesome birthday wishes!"</span>;
+        </p>
+        <p>}</p>
+      </div>
+
+      <div class="btn-container">
+        <button onclick="deployWishes()">Run celebrate()</button>
+      </div>
+
+      <div id="message"></div>
+    </div>
+
+    <script>
+      // Array containing all 5 wishes
+      const wishes = [
+        "🎉 Happy Birthday! Thanks for teaching us how to code the future! 🎉",
+        "Happy Birthday! Thank you for being such a great mentor and for making web development so engaging and accessible. Wishing you a wonderful year ahead filled with success and happiness!",
+        "Happy Birthday! May your day be error-free, your code compile on the first try, and your CSS always align perfectly. Thanks for being an awesome teacher!",
+        "Happy Birthday to a great teacher! Thanks for helping us build a strong foundation in web development. Hope you have a fantastic day celebrating!",
+        "Happy Birthday! Wishing you a high-bandwidth year filled with great health, success, and zero bugs. Thanks for all the knowledge you share with us!",
+      ];
+
+      let currentIndex = 0;
+
+      function deployWishes() {
+        // Trigger confetti blast
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+        });
+
+        // Get message container and make it visible
+        const messageBox = document.getElementById("message");
+        messageBox.style.display = "block";
+
+        // Set text to current wish
+        messageBox.innerText = wishes[currentIndex];
+
+        // Cycle to the next index (loop back to 0 at the end)
+        currentIndex = (currentIndex + 1) % wishes.length;
+      }
+    </script>
+  </body>
+</html>
